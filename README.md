@@ -1,4 +1,4 @@
-# Spring6Learn 算法笔记（Spring6-Learn）
+# Spring6Learn 学习笔记（Spring6-Learn）
 
 ## 项目简介
 
