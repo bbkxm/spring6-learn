@@ -2,5 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+    <!--获取bean演示，user对象创建-->
+    <bean id="user" class="org.example.User"> </bean>
+    <!--<bean id="user1" class="org.example.User"> </bean>-->
+    <!--一个接口实现类获取过程-->
+    <bean id="userDaoImpl" class="org.example.bean.UserDaoImpl"> </bean>
 </beans>

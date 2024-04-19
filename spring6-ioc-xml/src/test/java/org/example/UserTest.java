@@ -15,28 +15,23 @@ class UserTest {
     @BeforeEach
     void setUp() {
         ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+        // 根据id获取bean
+        userUnderTest = (User) context.getBean("user");
+        logger.info("根据id获取bean: {}", userUnderTest);
+        // 根据id和类型获取bean
         userUnderTest = context.getBean("user", User.class);
-        logger.info("1: {}", userUnderTest);
+        logger.info("根据id和类型获取bean: {}", userUnderTest);
+        // 根据类型获取bean，如果有多个，会抛出异常
+        // org.springframework.beans.factory.NoUniqueBeanDefinitionException:
+        // No qualifying bean of type 'org.example.User' available:
+        // expected single matching bean but found 2: user,user1
+        userUnderTest = context.getBean(User.class);
+        logger.info("根据类型获取bean: {}", userUnderTest);
     }
 
     @Test
-    void testAdd() {
-        // Setup
-        // Run the test
-        logger.info("2: ");
+    void testRun() {
         userUnderTest.run();
-
-        // Verify the results
     }
 
-    // 反射创建对象
-    @Test
-    void testAdd2() throws Exception {
-        // 获取class对象
-        Class<?> clazz = Class.forName("org.example.spring6.User");
-        // 调用方法创建对象
-//        Object object = clazz.newInstance();
-        User user = (User) clazz.getDeclaredConstructor().newInstance();
-        logger.info("3: {}", user);
-    }
 }
